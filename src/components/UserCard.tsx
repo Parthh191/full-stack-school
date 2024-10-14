@@ -1,11 +1,13 @@
 import prisma from "@/lib/prisma";
 import Image from "next/image";
 
+// Ensure the UserCard is an async function since we're dealing with async operations
 const UserCard = async ({
   type,
 }: {
   type: "admin" | "teacher" | "student" | "parent";
 }) => {
+  // Mapping Prisma models with explicit type checking
   const modelMap: Record<typeof type, any> = {
     admin: prisma.admin,
     teacher: prisma.teacher,
@@ -13,7 +15,14 @@ const UserCard = async ({
     parent: prisma.parent,
   };
 
-  const data = await modelMap[type].count();
+  // Ensure that the model is accessed properly and checked for null cases
+  const model = modelMap[type];
+  if (!model) {
+    throw new Error(`Model for type ${type} not found`);
+  }
+
+  // Fetching count of records for the specific model type
+  const data = await model.count();
 
   return (
     <div className="rounded-2xl odd:bg-lamaPurple even:bg-lamaYellow p-4 flex-1 min-w-[130px]">
