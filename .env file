@@ -1,0 +1,5 @@
+DATABASE_URL="postgresql://manthon:manthon123@localhost:5432/school"
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_d2FybS1kaW5nby0yNi5jbGVyay5hY2NvdW50cy5kZXYk
+CLERK_SECRET_KEY=sk_test_YW0NqeF6zTtw8IojF1j3BW1Kc5UjJyBPjtt2q3Cv5H
+
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=actual-cloudinary-cloud-name
